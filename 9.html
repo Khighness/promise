@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=<script>, initial-scale=1.0">
+  <title>K9</title>
+</head>
+<body>
+  <script>
+    /**
+     * Promise.all 构造一个包含n个promise的数组
+     * 只有所有的promise都成功才成功，只要有一个失败就直接失败
+     */
+    let p1 = new Promise((resolve, reject) => { resolve('OK') })
+    let p2 = Promise.resolve('Success')
+    let p3 = Promise.resolve('Yeah')
+    let p4 = Promise.reject('Failure')
+    const r1 = Promise.all([p1, p2, p3])
+    console.log(r1)
+    const r2 = Promise.all([p2, p3, p4])
+    console.log(r2)
+  </script>
+</body>
+</html>

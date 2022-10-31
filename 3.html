@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K3</title>
+</head>
+<body>
+  <div class="container">
+    <h2 class="page-header">Promise AJAX</h2>
+    <button class="btn btn-primary" id="btn">每日诗句</button>
+  </div>
+  <script>
+    // AJAX
+    const btn = document.querySelector('#btn')
+    btn.addEventListener('click', function() {
+      const p = new Promise((resolve, reject) => {
+        // 1. 创建对象
+        const xmlHttpRequest = new XMLHttpRequest()
+        // 2. 初始化
+        xmlHttpRequest.open('GET', 'https://v2.jinrishici.com/one.json')
+        // 3. 发送请求
+        xmlHttpRequest.send();
+        // 4. 处理响应
+        xmlHttpRequest.onreadystatechange = function() {
+          if (xmlHttpRequest.readyState === 4) {
+            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
+              resolve(xmlHttpRequest.response)
+            } else {
+              reject(XMLHttpRequest.status)
+            }
+          }
+        }
+      })
+      p.then((response) => {
+        console.log(response)
+      }, (reason) => {
+        console.error(reason.status)
+      })
+    })
+  </script>
+</body>
+</html>

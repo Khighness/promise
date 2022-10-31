@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K8</title>
+</head>
+<body>
+  <script>
+    // Promise.resolve
+    // 如果传入参数为非promise对象，则返回结果为成功promise对象
+    // 如果传入参数为promise对象，则参数的结果决定了resolve的结果
+    let p1 = Promise.resolve(200)
+    console.log(p1)
+
+    // Promise.reject
+    // 返回一个失败promise对象
+    let p2 = Promise.reject(500)
+    console.log(p2)
+
+    p2.catch(reason => console.log(reason))
+  </script>
+</body>
+</html>

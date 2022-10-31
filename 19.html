@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K19</title>
+</head>
+<body>
+  <script>
+    /**
+     * await函数
+     * 1. await右侧的表达式一般为Promise对象，但也可用是其他的值
+     * 2. 如果表达式是Promise对象，wait返回的是Promise成功的值
+     * 3. 如果表达式是其他值，直接将此值作为wait的返回值
+     * 注意：
+     * 1. await必须写在async函数中，但async函数中可以没有await
+     * 2.如果await的promise失败了，就会抛出异常，需要try-catch处理
+     */
+    async function main() {
+      let p1 = new Promise((resolve, reject) => {
+        resolve('OK')
+      })
+
+      let r1 = await p1
+      console.log(r1)
+
+      let r2 = await 3
+      console.log(r2)
+
+      let p3 = new Promise((resolve, reject) => {
+        reject('Error')
+      })
+
+      try {
+        let r3 = await p3
+      } catch (e) {
+        console.warn(e)
+      }
+    }
+
+    main()
+  </script>
+</body>
+</html>
